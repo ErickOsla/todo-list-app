@@ -1,20 +1,52 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      To-Do List
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <!-- Tareas Pendientes -->
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Tareas Pendientes</ion-label>
+    </ion-list-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-item *ngFor="let task of pendingTasks">
+      <ion-label>
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+      </ion-label>
+      <ion-checkbox
+        slot="end"
+        [(ngModel)]="task.completed"
+        (ngModelChange)="toggleTaskStatus(task)"
+      ></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <!-- Tareas Completadas -->
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Tareas Completadas</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let task of completedTasks">
+      <ion-label>
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+      </ion-label>
+      <ion-checkbox
+        slot="end"
+        [(ngModel)]="task.completed"
+        (ngModelChange)="toggleTaskStatus(task)"
+        disabled
+      ></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-footer>
+    <ion-button expand="full" routerLink="/add-task">Agregar Tarea</ion-button>
+  </ion-footer>
 </ion-content>

@@ -1,27 +1,74 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+/* Estilos generales para ambos modos */
+ion-content {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+/* Encabezado de las listas (Pendientes y Completadas) */
+ion-list-header {
+  background-color: var(--ion-item-background-color);
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  color: var(--ion-text-color);
 }
 
-#container p {
+/* Estilo para los elementos de la lista */
+ion-item {
+  --background: var(--ion-item-background-color);
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+ion-label h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+ion-label p {
+  font-size: 14px;
+  color: var(--ion-text-color);
+}
+
+/* Checkbox a la derecha */
+ion-checkbox {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+/* Botón de agregar tarea */
+ion-footer {
+  padding: 10px;
+  background-color: var(--ion-background-color);
+}
+
+ion-button {
+  background-color: var(--ion-color-primary);
+  color: var(--ion-color-light);
   font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
 }
 
-#container a {
-  text-decoration: none;
+/* Colores para el Modo Oscuro y Claro */
+:root {
+  --ion-background-color: #ffffff;  /* Claro */
+  --ion-item-background-color: #f4f4f4;
+  --ion-text-color: #000000;
+  --ion-color-primary: #3880ff;
+
+  /* Modo Oscuro */
+  --ion-background-color-dark: #1a1a1a;
+  --ion-item-background-color-dark: #333333;
+  --ion-text-color-dark: #e0e0e0;
+  --ion-color-primary-dark: #3880ff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: var(--ion-background-color-dark);
+    --ion-item-background-color: var(--ion-item-background-color-dark);
+    --ion-text-color: var(--ion-text-color-dark);
+    --ion-color-primary: var(--ion-color-primary-dark);
+  }
 }
